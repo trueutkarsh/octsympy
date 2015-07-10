@@ -11,14 +11,12 @@ matrix:
       env: SYMPY_VER=0.7.6 DOCTEST=yes
 
 # need octave devel pkgs for doctest (has compiled code as of July 2015)
-# TODO: once doctest is in OF, change to "install -forge" below
 install:
   - sudo apt-add-repository --yes ppa:octave/stable
   - sudo apt-get update
   - sudo apt-get install octave liboctave-dev
   - "pip install sympy==$SYMPY_VER"
-  - wget https://github.com/catch22/octave-doctest/releases/download/v0.4.0/doctest-0.4.0.tar.gz
-  - octave --eval "pkg install doctest-0.4.0.tar.gz"
+  - octave --eval "pkg install -forge doctest"
 
 # all commands here must have exit code 0 for the build to be called "passing"
 # debugging: octave --eval "syms x; A = [x sin(x) x^3]; A; exit(0)"
