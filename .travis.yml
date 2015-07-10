@@ -1,6 +1,17 @@
 language: python
 # well its really octave, but that is not supported
 
+addons:
+  apt:
+    sources:
+    - ppa:octave/stable
+
+addons:
+  apt:
+    packages:
+    - octave
+    - liboctave-dev
+
 matrix:
   include:
     - python: "2.7"
@@ -12,9 +23,6 @@ matrix:
 
 # need octave devel pkgs for doctest (has compiled code as of July 2015)
 install:
-  - sudo apt-add-repository --yes ppa:octave/stable
-  - sudo apt-get update
-  - sudo apt-get install octave liboctave-dev
   - "pip install sympy==$SYMPY_VER"
   - octave --eval "pkg install -forge doctest"
 
