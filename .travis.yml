@@ -3,10 +3,10 @@ language: python
 
 sudo: false
 
-addons:
-  apt:
-    sources:
-    - ppa:octave/stable
+#addons:
+#  apt:
+#    sources:
+#    - ppa:octave/stable
 
 addons:
   apt:
