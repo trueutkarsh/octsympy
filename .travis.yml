@@ -13,7 +13,9 @@ addons:
   apt:
     packages:
     - octave
-    - liboctave-dev
+
+# currently: E: Unable to locate package liboctave-dev
+#    - liboctave-dev
 
 matrix:
   include:
