@@ -33,7 +33,7 @@ function h = horzcat(varargin)
   cmd = {
           '_proc = []'
           'for i in _ins:'
-          '    if i.is_Matrix:'
+          '    if isinstance(i, sp.MatrixBase):'
           '        if i.shape == (0, 0):'
           '            pass'
           '        else:'

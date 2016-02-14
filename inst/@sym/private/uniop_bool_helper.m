@@ -51,7 +51,7 @@ function r = uniop_bool_helper(x, scalar_fcn, opt, varargin)
       cmd = [ cmd
               'x = _ins[0]'
               'pp = _ins[1:]'
-              'if x.is_Matrix:'
+              'if isinstance(x, sp.MatrixBase):'
               '    # bool will map None to False'
               '    return [bool(sf(a, *pp)) for a in x.T],'
               'return bool(sf(x, *pp))' ];
@@ -68,7 +68,7 @@ function r = uniop_bool_helper(x, scalar_fcn, opt, varargin)
       cmd = [ cmd
               'x = _ins[0]'
               'pp = _ins[1:]'
-              'if x.is_Matrix:'
+              'if isinstance(x, sp.MatrixBase):'
               '    return x.applyfunc(sf, *pp)'
               'return sf(x, *pp)' ];
 

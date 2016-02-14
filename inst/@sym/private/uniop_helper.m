@@ -34,7 +34,7 @@ function z = uniop_helper(x, scalar_fcn)
   % note: cmd is already cell array, hence [ concatenates with it
   cmd = [ cmd
           '(x,) = _ins'
-          'if x.is_Matrix:'
+          'if isinstance(x, sp.MatrixBase):'
           '    return x.applyfunc(lambda a: sf(a)),'
           'else:'
           '    return sf(x),' ];
