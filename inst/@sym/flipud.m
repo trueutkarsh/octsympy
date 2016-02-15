@@ -1,4 +1,4 @@
-%% Copyright (C) 2014 Colin B. Macdonald
+%% Copyright (C) 2014, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -29,12 +29,12 @@
 
 function B = flipud(A)
 
-  cmd = { '(A,) = _ins' ...
-          'if not A.is_Matrix:' ...
-          '    A = sp.Matrix([A])' ...
-          'm, _ = A.shape' ...
-          'for i in range(0, int(m/2)):' ...
-          '    A.row_swap(i, m-i-1)' ...
+  cmd = { 'A, = _ins'
+          'if not isinstance(A, sp.MatrixBase):'
+          '    A = sp.Matrix([A])'
+          'm, _ = A.shape'
+          'for i in range(0, int(m/2)):'
+          '    A.row_swap(i, m-i-1)'
           'return A,' };
 
   B = python_cmd (cmd, sym(A));
@@ -60,4 +60,3 @@ end
 %! % scalar
 %! syms x
 %! assert (isequal (flipud(x), x))
-

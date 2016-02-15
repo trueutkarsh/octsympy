@@ -67,4 +67,19 @@ end
 %!test
 %! a = sym([1 2]);
 %! a(1,2) = None;
-%! assert (isequal (a, [sym(1) None]))
+%! assert (isequal (a, [sym(1) None]));
+
+%!assert (isequal (None(1), None));
+%!error None(None);
+%!error x=sym('x'); x(None);
+%!error None(None);
+%!error 1 + None;
+%!error None - 1;
+%!error 6*None;
+%!error 2**None;
+%!error [1 2].*None;
+%!error isconstant(None);
+%!error nnz(None);
+
+%!assert (isequal (children(None), None))
+%!assert (isequal (repmat(None, 1, 2), [None None]))

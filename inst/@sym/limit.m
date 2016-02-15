@@ -86,7 +86,7 @@ function L = limit(f, x, a, dir)
   end
 
   cmd = { '(f, x, a, pdir) = _ins'
-          'if f.is_Matrix:'
+          'if isinstance(f, sp.MatrixBase):'
           '    g = f.applyfunc(lambda b: b.limit(x, a, dir=pdir))'
           'else:'
           '    g = f.limit(x, a, dir=pdir)'

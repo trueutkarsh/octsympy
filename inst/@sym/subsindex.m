@@ -1,4 +1,4 @@
-%% Copyright (C) 2014 Colin B. Macdonald
+%% Copyright (C) 2014, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -32,7 +32,7 @@ function b = subsindex(x)
   % check if all bool or all integer
   cmd = {
       '(A,) = _ins'
-      'if not A.is_Matrix:'
+      'if not isinstance(A, sp.MatrixBase):'
       '    A = sp.Matrix([A])'
       'if all([x.is_Integer for x in A]):'
       '    return 1,'

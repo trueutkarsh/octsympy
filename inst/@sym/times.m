@@ -1,4 +1,4 @@
-%% Copyright (C) 2014 Colin B. Macdonald
+%% Copyright (C) 2014, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -37,10 +37,9 @@ function z = times(x, y)
 
 
   cmd = { '(x,y) = _ins'
-          'if x.is_Matrix and y.is_Matrix:'
+          'if isinstance(x, sp.MatrixBase) and isinstance(y, sp.MatrixBase):'
           '    return x.multiply_elementwise(y),'
-          'else:'
-          '    return x*y,' };
+          'return x*y,' };
 
   z = python_cmd (cmd, sym(x), sym(y));
 

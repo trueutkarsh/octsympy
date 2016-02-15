@@ -71,13 +71,13 @@ function z = power(x, y)
 
 
   cmd = { '(x,y) = _ins'
-          'if x.is_Matrix and y.is_Matrix:'
+          'if isinstance(x, sp.MatrixBase) and isinstance(y, sp.MatrixBase):'
           '    for i in range(0, len(x)):'
           '        x[i] = x[i]**y[i]'
           '    return x,'
-          'if x.is_Matrix and not y.is_Matrix:'
+          'if isinstance(x, sp.MatrixBase) and not isinstance(y, sp.MatrixBase):'
           '    return x.applyfunc(lambda a: a**y),'
-          'if not x.is_Matrix and y.is_Matrix:'
+          'if isinstance(y, sp.MatrixBase) and not isinstance(x, sp.MatrixBase):'
           '    return y.applyfunc(lambda a: x**a),'
           'else:'
           '    return x**y,' };

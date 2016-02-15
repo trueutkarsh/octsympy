@@ -1,4 +1,4 @@
-%% Copyright (C) 2014 Colin B. Macdonald
+%% Copyright (C) 2014, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -72,7 +72,7 @@ function z = mat_rccross_access(A, r, c)
   end
 
   cmd = { '(A, rr, cc) = _ins'
-          'if not A.is_Matrix:'
+          'if not isinstance(A, sp.MatrixBase):'
           '    A = sp.Matrix([A])'
           'M = sp.Matrix.zeros(len(rr), len(cc))'
           'for i in range(0, len(rr)):'

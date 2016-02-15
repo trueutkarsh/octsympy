@@ -84,10 +84,10 @@ function r = children(f)
     'f, = _ins'
     'f = sympify(f)'  % mutable -> immutable
     'def scalarfcn(a):'
-    '    if len(a.args) == 0:'
+    '    if not hasattr(a, "args") or len(a.args) == 0:'
     '        return sympy.Matrix([a])'  % children(x) is [x]
     '    return sympy.Matrix([a.args])'
-    'if f.is_Matrix:'
+    'if isinstance(f, sp.MatrixBase):'
     '    r = [scalarfcn(a) for a in f.T]'  % note transpose
     'else:'
     '    r = scalarfcn(f)'

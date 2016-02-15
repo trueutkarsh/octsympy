@@ -1,4 +1,4 @@
-%% Copyright (C) 2014 Colin B. Macdonald
+%% Copyright (C) 2014, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -44,14 +44,14 @@ function z = binop_helper(x, y, scalar_fcn)
   % note: cmd is already cell array, hence [ concatenates with it
   cmd = [ cmd
           '(x, y) = _ins'
-          'if x.is_Matrix and y.is_Matrix:'
+          'if isinstance(x, sp.MatrixBase) and isinstance(y, sp.MatrixBase):'
           '    assert x.shape == y.shape'
           '    A = sp.Matrix(x.shape[0], x.shape[1],'
           '        lambda i,j: _op(x[i,j], y[i,j]))'
           '    return A,'
-          'elif x.is_Matrix:'
+          'elif isinstance(x, sp.MatrixBase):'
           '    return x.applyfunc(lambda a: _op(a, y)),'
-          'elif y.is_Matrix:'
+          'elif isinstance(y, sp.MatrixBase):'
           '    return y.applyfunc(lambda a: _op(x, a)),'
           'else:'
           '    return _op(x, y),' ];

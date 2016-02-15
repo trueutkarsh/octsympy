@@ -1,4 +1,4 @@
-%% Copyright (C) 2015 Colin B. Macdonald
+%% Copyright (C) 2015, 2016 Colin B. Macdonald
 %%
 %% This file is part of OctSymPy.
 %%
@@ -60,11 +60,11 @@ function [z, I] = min(A, B, dim)
     A = sym(A);
     B = sym(B);
     cmd = { '(A, B) = _ins'
-            'if not A.is_Matrix and not B.is_Matrix:'
+            'if not isinstance(A, sp.MatrixBase) and not isinstance(B, sp.MatrixBase):'
             '    return min(A, B),'
-            'if not A.is_Matrix:'
+            'if not isinstance(A, sp.MatrixBase):'
             '    A = sp.Matrix(B.rows, B.cols, [A]*(B.rows*B.cols))'
-            'elif not B.is_Matrix:'
+            'elif not isinstance(B, sp.MatrixBase):'
             '    B = sp.Matrix(A.rows, A.cols, [B]*(A.rows*A.cols))'
             'M = A.copy()'
             'for i in range(0, A.rows):'
