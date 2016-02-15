@@ -90,7 +90,7 @@ function r = logical(p)
 
   cmd = vertcat(cmd, {
     '(x, unknown) = _ins'
-    'if x.is_Matrix:'
+    'if isinstance(x, sp.MatrixBase):'
     '    r = [a for a in x.T]'  % note transpose
     'else:'
     '    r = [x,]'
